@@ -11,6 +11,10 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <start-class>com.anoop.quoteorderproject.quoteordertracker.order.OrderServiceApplication</start-class>
+    </properties>
+
     <artifactId>order</artifactId>
     <version>1.0.0</version>
 
