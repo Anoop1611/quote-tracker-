@@ -9,6 +9,16 @@ public class BranchDTO {
     private String districtCode;
     private String regionCode;
 
+    public BranchDTO(String branchCode, String name, String treeBranchType,
+                     String generalLedgerExpense, String districtCode, String regionCode) {
+        this.branchCode = branchCode;
+        this.name = name;
+        this.treeBranchType = treeBranchType;
+        this.generalLedgerExpense = generalLedgerExpense;
+        this.districtCode = districtCode;
+        this.regionCode = regionCode;
+        // Default constructor
+    }
     // ✅ Getters and Setters
     public String getBranchCode() {
         return branchCode;

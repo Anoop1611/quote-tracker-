@@ -5,12 +5,21 @@ public class EmployeeDTO {
     private String employeeId;
     private String employeeName;
     private String employeeEmail;
-    private String employeeRole;
     private String jobCode;
     private String generalLedgerExpense;
     private String treeBranchType;
 
     // ✅ Getters and Setters
+    public EmployeeDTO(String employeeId, String employeeName, String employeeEmail, String jobCode, String generalLedgerExpense, String treeBranchType) {
+        this.employeeId = employeeId;
+        this.employeeName = employeeName;
+        this.employeeEmail = employeeEmail;
+        this.jobCode = jobCode;
+        this.generalLedgerExpense = generalLedgerExpense;
+        this.treeBranchType = treeBranchType;
+    }
+
+
     public String getEmployeeId() {
         return employeeId;
     }
@@ -35,13 +44,6 @@ public class EmployeeDTO {
         this.employeeEmail = employeeEmail;
     }
 
-    public String getEmployeeRole() {
-        return employeeRole;
-    }
-
-    public void setEmployeeRole(String employeeRole) {
-        this.employeeRole = employeeRole;
-    }
 
     public String getJobCode() {
         return jobCode;

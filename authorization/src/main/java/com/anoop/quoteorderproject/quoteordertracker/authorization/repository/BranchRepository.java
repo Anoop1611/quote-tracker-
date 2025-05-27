@@ -4,11 +4,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
-public interface BranchRepository extends JpaRepository<Branch, Long> {
-    // Custom query methods can be defined here if needed
-    // For example, to find branches by name:
-    List<Branch> findByName(String name);
-    
-    // You can also define methods for other fields as required
+public interface BranchRepository extends JpaRepository<Branch, String> {
+    Branch findByBranchCode(String branchCode);
+    List<Branch> findByDistrictCode(String districtCode);
+
+    List<Branch> findByRegionCode(String regionCode);
 
 }
