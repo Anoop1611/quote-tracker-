@@ -28,6 +28,11 @@ public class EmployeeService {
     return employeeRepository.findById(employeeId)
             .map(this::convertToDTO);
 }
+    public Optional<EmployeeDTO> getEmployeeByEmail(String email) {
+    return employeeRepository.findByEmailIgnoreCase(email)
+        .map(employeeMapper::toDTO);
+}
+
 
 
     private EmployeeDTO convertToDTO(Employee employee) {
