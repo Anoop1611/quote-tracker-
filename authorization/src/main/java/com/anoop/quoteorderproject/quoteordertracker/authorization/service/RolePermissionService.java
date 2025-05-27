@@ -1,5 +1,4 @@
 package com.anoop.quoteorderproject.quoteordertracker.authorization.service;
-package com.anoop.quoteorderproject.quoteordertracker.authorization.service;
 
 import org.springframework.stereotype.Service;
 

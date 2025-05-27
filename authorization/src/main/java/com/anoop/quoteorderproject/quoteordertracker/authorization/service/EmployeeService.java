@@ -30,7 +30,7 @@ public class EmployeeService {
 }
     public Optional<EmployeeDTO> getEmployeeByEmail(String email) {
     return employeeRepository.findByEmailIgnoreCase(email)
-        .map(employeeMapper::toDTO);
+        .map(this::convertToDTO);
 }
 
 

@@ -29,7 +29,7 @@ public class DMAuthorizationStrategy implements AuthorizationStrategy {
         List<String> permissions = rolePermissionService.getPermissionsByAdUserId(emp.getEmail());
 
         return new AuthorizationResponse(
-            emp.getId(),
+            emp.getEmployeeId(),
             "DM",
             branchCodes,
             permissions
