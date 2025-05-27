@@ -1,5 +1,4 @@
 package com.anoop.quoteorderproject.quoteordertracker.authorization.controller;
-import com.anoop.quoteorderproject.quoteordertracker.authorization.entity.Branch;
 import com.anoop.quoteorderproject.quoteordertracker.authorization.service.BranchService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

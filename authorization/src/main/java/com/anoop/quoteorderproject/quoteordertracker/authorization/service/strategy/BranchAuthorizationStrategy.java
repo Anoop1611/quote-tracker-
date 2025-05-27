@@ -2,21 +2,28 @@ package com.anoop.quoteorderproject.quoteordertracker.authorization.service.stra
 
 import com.anoop.quoteorderproject.quoteordertracker.authorization.dto.AuthorizationResponse;
 import com.anoop.quoteorderproject.quoteordertracker.authorization.dto.EmployeeDTO;
+import com.anoop.quoteorderproject.quoteordertracker.authorization.service.BranchService;
+import com.anoop.quoteorderproject.quoteordertracker.authorization.dto.BranchDTO;
 import com.anoop.quoteorderproject.quoteordertracker.authorization.service.RolePermissionService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import java.util.Collections;
+
 import java.util.List;
-import java.util.Set;
+
 @Component
 public class BranchAuthorizationStrategy implements AuthorizationStrategy {
 
-    @Autowired private BranchService branchService;
-    @Autowired private RolePermissionService rolePermissionService;
+    @Autowired
+    private BranchService branchService;
+
+    @Autowired
+    private RolePermissionService rolePermissionService;
 
     @Override
     public boolean isApplicable(EmployeeDTO emp) {
         return "BRANCH".equalsIgnoreCase(emp.getTreeBranchType()) &&
+               emp.getGeneralLedgerExpense() != null &&
                emp.getGeneralLedgerExpense().length() == 7;
     }
 
@@ -24,11 +31,17 @@ public class BranchAuthorizationStrategy implements AuthorizationStrategy {
     public AuthorizationResponse authorize(EmployeeDTO emp) {
         String branchCode = emp.getGeneralLedgerExpense();
         BranchDTO branch = branchService.getBranchByCode(branchCode);
-        List<String> permissions = rolePermissionService.getPermissionsByAdUserId(emp.getEmail());
+
+        if (branch == null) {
+            throw new RuntimeException("Branch not found for code: " + branchCode);
+        }
+
+        String role = "branch_support"; // or "branch_user" if that's what you want to call it
+        List<String> permissions = rolePermissionService.getRolePermissions(role);
 
         return new AuthorizationResponse(
-            emp.getId(),
-            "BRANCH",
+            emp.getEmployeeId(),
+            role,
             List.of(branch.getBranchCode()),
             permissions
         );

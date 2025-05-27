@@ -16,4 +16,5 @@ public class UserRole {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "roleId", referencedColumnName = "id")
     private Role role;
+    
 }

@@ -25,4 +25,11 @@ public class EmployeeController {
             .map(ResponseEntity::ok)
             .orElse(ResponseEntity.notFound().build());
     }
+    @GetMapping("/by-email")
+public ResponseEntity<EmployeeDTO> getEmployeeByEmail(@PathVariable String email) {
+    return employeeService.getEmployeeByEmail(email)
+        .map(ResponseEntity::ok)
+        .orElse(ResponseEntity.notFound().build());
+}
+
 }
